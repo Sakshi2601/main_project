@@ -1,6 +1,8 @@
 const User = require('../models/user')
 const {hashPassword, comparePassword} = require('../helpers/auth');
 const jwt = require('jsonwebtoken');
+const multer = require('multer');
+const path = require('path');
 
 const test = (req, res) => {
   res.json('test is workng')
@@ -73,27 +75,72 @@ const loginUser = async (req, res) => {
   }
 }
 
-const getProfile = (req, res) => {
-  const {token} = req.cookies
-  if(token) {
-    jwt.verify(token, process.env.JWT_SECRET, {}, (err, user) => {
+const getProfile = async (req, res) => {
+  const { token } = req.cookies;
+  if (token) {
+    jwt.verify(token, process.env.JWT_SECRET, {}, async (err, data) => {
       if (err) throw err;
-      res.json(user)
-    })
+      const user = await User.findById(data.id);
+      res.json(user); // Send user profile data to frontend
+    });
   } else {
-    res.json(null)
+    res.status(401).json({ error: "Unauthorized" });
   }
-}
+};
+
 
 // Logout endpoint
 const logoutUser = (req, res) => {
   res.cookie('token', '', { maxAge: 0 }).json({ message: 'Logged out successfully' });
 };
 
+// Set up multer for file storage
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads/');
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + path.extname(file.originalname)); // Save file with a timestamp
+  },
+});
+
+const upload = multer({ storage });
+
+// Update user profile including the profile picture
+const updateProfile = async (req, res) => {
+  const { token } = req.cookies;
+  if (token) {
+    jwt.verify(token, process.env.JWT_SECRET, {}, async (err, data) => {
+      if (err) throw err;
+      const { name, dateOfBirth, interests, about } = req.body;
+
+      let updatedData = { name, dateOfBirth, interests, about };
+
+      // Check if a file was uploaded
+      if (req.file) {
+        updatedData.profilePicture = req.file.filename; // Save the filename in the DB
+      }
+
+      // Update the user's profile in the database
+      const updatedUser = await User.findByIdAndUpdate(
+        data.id,
+        updatedData,
+        { new: true }
+      );
+      res.json(updatedUser); // Send the updated user data
+    });
+  } else {
+    res.status(401).json({ error: "Unauthorized" });
+  }
+};
+
+
 module.exports = {
   test,
   registerUser,
   loginUser,
   getProfile,
-  logoutUser
+  logoutUser,
+  upload,
+  updateProfile
 }

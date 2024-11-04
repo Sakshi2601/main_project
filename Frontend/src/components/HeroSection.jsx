@@ -11,10 +11,6 @@ const HeroSection = () => {
 
     <div id="main" className="flex flex-col items-center mt-6 lg:mt-20">
 
-      <div>
-        {!!user && (<h1>Welcome {user.name} !</h1>)}
-      </div>
-
       <h1 className="text-4xl sm:text-6xl lg:text-7xl text-center tracking-wide">
         Gamified Platform for Law
         <span className="bg-gradient-to-r from-orange-500 to-red-800 text-transparent bg-clip-text">
@@ -28,6 +24,7 @@ const HeroSection = () => {
         into immersive reality!
       </p>
       <div className="flex justify-center my-10">
+        {!user &&
         <Link to='/login'>
         <a
           href="#"
@@ -36,6 +33,7 @@ const HeroSection = () => {
           Start for free
         </a>
         </Link>
+        }
         <a href="#services" className="py-3 px-4 mx-3 rounded-md border">
           Explore
         </a>

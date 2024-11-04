@@ -74,7 +74,11 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                <span>Welcome, {user.name}</span>
+                <Link to="/profile">
+                  <button className="bg-gradient-to-r from-orange-500 to-orange-800 py-2 px-3 rounded-md">
+                    Profile
+                  </button>
+                </Link>
                 <button
                   onClick={handleLogout}
                   className="py-2 px-3 border rounded-md"

@@ -17,7 +17,6 @@ const Home = () => {
       <Workflow />
       <Pricing />
       <Testimonials />
-      <Footer />
     </div>
   </>
   )

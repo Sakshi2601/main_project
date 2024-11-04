@@ -12,6 +12,13 @@ import user4 from "../assets/profile-pictures/user4.jpg";
 import user5 from "../assets/profile-pictures/user5.jpg";
 import user6 from "../assets/profile-pictures/user6.jpg";
 
+// For quizes images
+import quiz1 from "../assets/law.png";
+import quiz2 from "../assets/traffic.png";
+import quiz3 from "../assets/ethics.png";
+import quiz4 from "../assets/labor.png";
+
+
 export const navItems = [
   { label: "Features", href: "#feature" },
   { label: "Services", href: "#services" },
@@ -157,18 +164,20 @@ export const serviceOptions = [
     desc: "Learn and play with immersive games",
     features: [
       "Traffic Games",
-      "Scenerio based Games",
+      "Scenario based Games",
       "Law Quizzes",
     ],
+    link: "/quiz", // Add your custom link here
   },
   {
     title: "VR Stories",
-    desc: "Learn with immersive games",
+    desc: "Learn with immersive stories",
     features: [
       "Immersive Stories",
       "3D Visualizations",
       "Law and Ethics Awareness",
     ],
+    link: "stories", // Add your custom link here
   },
   {
     title: "Mentoring",
@@ -178,8 +187,58 @@ export const serviceOptions = [
       "Guidance from Mentors",
       "Access to Emergency calls",
     ],
+    link: "/mentor", // Add your custom link for Mentoring
   },
 ];
+
+export const quizOptions = [
+  {
+    title: "Law and Crimes Quiz",
+    desc: "Test your knowledge on laws and regulations in Indian Penal Code",
+    features: [
+      "Multiple choice questions",
+      "Time-bound quizzes",
+      "Score tracking",
+    ],
+    image: quiz1, // Path to your image
+    link: "/pages/law-quiz.jsx",
+  },
+  {
+    title: "Traffic Safety Rules Quiz",
+    desc: "Check your awareness of traffic rules with examples and conditions",
+    features: [
+      "Interactive questions",
+      "Scenario-based situations",
+      "Real-time feedback",
+    ],
+    image: quiz2, // Path to your image
+    link: "/quizgame",
+  },
+  {
+    title: "Ethics and Laws Quiz",
+    desc: "Challenge your understanding of ethical practices",
+    features: [
+      "Thought-provoking questions",
+      "Real-world examples",
+      "Scored at the end",
+    ],
+    image: quiz3, // Path to your image
+    link: "/pages/ethics-quiz.jsx",
+  },
+  {
+    title: "Child Labouring Quiz",
+    desc: "Challenge your understanding of Child Labour",
+    features: [
+      "Thought-provoking questions",
+      "Real-world examples",
+      "Scored at the end",
+    ],
+    image: quiz4, // Path to your image
+    link: "/pages/ethics-quiz.jsx",
+  },
+];
+
+
 
 export const resourcesLinks = [
   { href: "#", text: "Getting Started" },
