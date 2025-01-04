@@ -11,6 +11,7 @@ import Profile from "./pages/Profile";
 import Quiz from "./pages/Quiz";
 import Mentor from "./pages/Mentor";
 import QuizGame from "./pages/QuizGame";
+import Stories from "./pages/Stories";
 
 axios.defaults.baseURL = 'http://localhost:8000';
 axios.defaults.withCredentials = true
@@ -28,6 +29,7 @@ const App = () => {
         <Route path="/quiz" element={<Quiz />} />
         <Route path="/mentor" element={<Mentor />} />
         <Route path="/quizgame" element={<QuizGame />} />
+        <Route path="/stories" element={<Stories />} />
       </Routes>
       <Footer />
     </UserContextProvider>

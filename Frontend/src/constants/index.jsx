@@ -170,7 +170,7 @@ export const serviceOptions = [
     link: "/quiz", // Add your custom link here
   },
   {
-    title: "VR Stories",
+    title: "3D Cases",
     desc: "Learn with immersive stories",
     features: [
       "Immersive Stories",
