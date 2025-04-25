@@ -8,7 +8,7 @@ import user from "../assets/user.png";
 
 const Mentor = () => {
   const emergencyNumbers = [
-    { name: "Ambulance", number: "1122" },
+    { name: "Ambulance", number: "112" },
     { name: "Traffic Police", number: "1915" },
     { name: "Mobile Phones", number: "112" },
     { name: "Tourist Police", number: "1422" },
@@ -47,7 +47,7 @@ const Mentor = () => {
               <h2 className="text-3xl font-semibold">AI Chatbot</h2>
               <p>Get instant answers from our AI chatbot.</p>
               <a
-                href="/chatbot"
+                href="https://vidhi-vaani.vercel.app"
                 className="inline-block mt-4 bg-gradient-to-r from-orange-400 to-orange-600 text-white py-2 px-4 rounded-lg hover:bg-orange-500"
               >
                 Talk to Chatbot

@@ -7,9 +7,10 @@ import quiz2 from "../assets/traffic.png";
 import quiz3 from "../assets/ethics.png";
 import quiz4 from "../assets/labor.png";
 
+// Scenario options
 const scenarioOptions = [
   {
-    image: quiz1, // Replace with the actual image path
+    image: quiz1,
     title: "Crime Scene Investigation",
     desc: "Immerse yourself in a crime scene and uncover the clues to solve the case.",
     features: [
@@ -18,10 +19,10 @@ const scenarioOptions = [
       "Make critical decisions",
       "Solve the mystery"
     ],
-    link: "/scenario1", // Link to the scenario
+    link: "https://case-based-crime1.vercel.app",
   },
   {
-    image: quiz2, // Replace with the actual image path
+    image: quiz2,
     title: "Ethical Dilemma Simulation",
     desc: "Face real-life ethical dilemmas & decisions that affect outcome.",
     features: [
@@ -30,10 +31,10 @@ const scenarioOptions = [
       "Engage in critical thinking",
       "Reflect on your choices"
     ],
-    link: "/scenario2", // Link to the scenario
+    link: "/scenario2",
   },
   {
-    image: quiz3, // Replace with the actual image path
+    image: quiz3,
     title: "Negotiation Tactics",
     desc: "Learn negotiation tactics through immersive scenarios and role-play.",
     features: [
@@ -42,10 +43,10 @@ const scenarioOptions = [
       "See results of decisions",
       "Enhance your negotiation skills"
     ],
-    link: "/scenario3", // Link to the scenario
+    link: "/scenario3",
   },
   {
-    image: quiz4, // Replace with the actual image path
+    image: quiz4,
     title: "Crisis Management",
     desc: "Manage crisis situation and make strategic decisions to navigate through.",
     features: [
@@ -54,11 +55,11 @@ const scenarioOptions = [
       "Make quick decisions",
       "Learn from the outcomes"
     ],
-    link: "/scenario4", // Link to the scenario
+    link: "/scenario4",
   },
 ];
 
-// Game data
+// Game options
 const gameOptions = [
   {
     iframe: (
@@ -91,7 +92,7 @@ const gameOptions = [
         frameBorder="0"
         allowFullScreen
         className="w-full h-64 rounded-lg"
-        title="Game 3"
+        title="Escape Games"
       />
     ),
     title: "Escape Games",
@@ -100,10 +101,11 @@ const gameOptions = [
 
 const Quizzes = () => {
   return (
-    <div id="quizzes" className="mt-20">
+    <div id="quizzes" className="mt-20 text-white">
 
+      {/* Games Section */}
       <div id="games" className="mt-20">
-        <h2 className="text-2xl sm:text-5xl lg:text-6xl text-center my-8 tracking-wide text-white">
+        <h2 className="text-2xl sm:text-5xl lg:text-6xl text-center my-8 tracking-wide">
           3D Games
         </h2>
         <div className="flex flex-wrap justify-center">
@@ -113,18 +115,15 @@ const Quizzes = () => {
               className="w-full sm:w-1/2 lg:w-1/3 p-4 flex justify-center"
             >
               <div className="bg-transparent border border-neutral-700 rounded-lg shadow-lg p-6 w-full">
-                {/* Game Iframe */}
                 <div className="mb-4">{game.iframe}</div>
-                {/* Game Name */}
-                <p className="text-lg font-bold text-center text-white">
-                  {game.title}
-                </p>
+                <p className="text-lg font-bold text-center">{game.title}</p>
               </div>
             </div>
           ))}
         </div>
       </div>
 
+      {/* Quiz Section */}
       <h2 className="text-2xl sm:text-5xl lg:text-6xl text-center my-8 tracking-wide">
         Our Quizzes
       </h2>
@@ -132,14 +131,13 @@ const Quizzes = () => {
         {quizOptions.map((option, index) => (
           <div key={index} className="w-full sm:w-1/2 lg:w-1/4 p-2">
             <div className="p-10 border border-neutral-700 rounded-xl">
-              {/* Add the image with proper sizing */}
               <img
                 src={option.image}
                 alt={option.title}
                 className="w-full h-40 object-cover rounded-lg mb-6"
               />
               <p className="text-3xl mb-4">{option.title}</p>
-              <p className="mb-6 text-1xl">{option.desc}</p>
+              <p className="mb-6 text-xl">{option.desc}</p>
               <ul>
                 {option.features.map((feature, index) => (
                   <li key={index} className="mt-4 flex items-center">
@@ -159,6 +157,7 @@ const Quizzes = () => {
         ))}
       </div>
 
+      {/* Scenario Section */}
       <div id="scenarios" className="mt-20">
         <h2 className="text-2xl sm:text-5xl lg:text-6xl text-center my-8 tracking-wide">
           Our Scenarios
@@ -167,7 +166,6 @@ const Quizzes = () => {
           {scenarioOptions.map((option, index) => (
             <div key={index} className="w-full sm:w-1/2 lg:w-1/4 p-2">
               <div className="p-10 border border-neutral-700 rounded-xl">
-                {/* Add the image with proper sizing */}
                 <img
                   src={option.image}
                   alt={option.title}
@@ -198,7 +196,5 @@ const Quizzes = () => {
     </div>
   );
 };
-
-
 
 export default Quizzes;

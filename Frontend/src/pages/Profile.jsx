@@ -1,5 +1,5 @@
 import { useContext, useState, useEffect } from "react";
-import { UserContext } from "../../context/userContext";
+import { UserContext } from "../context/userContext";
 import axios from "axios";
 
 const Profile = () => {

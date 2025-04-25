@@ -6,12 +6,13 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import axios from 'axios';
 import {Toaster} from 'react-hot-toast';
-import { UserContextProvider } from "../context/userContext";
+import { UserContextProvider } from "./context/userContext";
 import Profile from "./pages/Profile";
 import Quiz from "./pages/Quiz";
 import Mentor from "./pages/Mentor";
 import QuizGame from "./pages/QuizGame";
 import Stories from "./pages/Stories";
+import Game from "./pages/Game";
 
 axios.defaults.baseURL = 'http://localhost:8000';
 axios.defaults.withCredentials = true
@@ -30,6 +31,7 @@ const App = () => {
         <Route path="/mentor" element={<Mentor />} />
         <Route path="/quizgame" element={<QuizGame />} />
         <Route path="/stories" element={<Stories />} />
+        <Route path="/games" element={<Game />} />
       </Routes>
       <Footer />
     </UserContextProvider>

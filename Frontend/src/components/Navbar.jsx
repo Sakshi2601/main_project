@@ -1,38 +1,26 @@
 import { Menu, X } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useContext } from "react";
 import logo from "../assets/logo.png";
 import { navItems } from "../constants";
 import { Link, useNavigate } from "react-router-dom";
-import axios from 'axios';
+import axios from "axios";
+import { UserContext } from "../context/userContext";
 
 const Navbar = () => {
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
-  const [user, setUser] = useState(null); // State to hold the logged-in user
+  const { user, setUser } = useContext(UserContext); // Use Context
   const navigate = useNavigate();
 
   const toggleNavbar = () => {
     setMobileDrawerOpen(!mobileDrawerOpen);
   };
 
-  // Fetch user data to check if logged in
-  useEffect(() => {
-    const fetchUserProfile = async () => {
-      try {
-        const { data } = await axios.get('/profile'); // Fetch profile from backend
-        setUser(data);  // Set user if logged in, otherwise it's null
-      } catch (error) {
-        console.error("Error fetching user profile:", error);
-      }
-    };
-    fetchUserProfile();
-  }, []);
-
   // Handle logout
   const handleLogout = async () => {
     try {
-      await axios.post('/logout'); // Logout from backend
-      setUser(null);  // Clear user state
-      navigate('/');  // Redirect to home or login
+      await axios.post("/logout");
+      setUser(null); // Update user state
+      navigate("/"); // Redirect to home
     } catch (error) {
       console.error("Error logging out:", error);
     }
@@ -59,17 +47,12 @@ const Navbar = () => {
             {!user ? (
               <>
                 <Link to="/login">
-                  <a href="#" className="py-2 px-3 border rounded-md">
-                    Sign In
-                  </a>
+                  <button className="py-2 px-3 border rounded-md">Sign In</button>
                 </Link>
                 <Link to="/register">
-                  <a
-                    href="#"
-                    className="bg-gradient-to-r from-orange-500 to-orange-800 py-2 px-3 rounded-md"
-                  >
+                  <button className="bg-gradient-to-r from-orange-500 to-orange-800 py-2 px-3 rounded-md">
                     Create an account
-                  </a>
+                  </button>
                 </Link>
               </>
             ) : (
@@ -79,10 +62,7 @@ const Navbar = () => {
                     Profile
                   </button>
                 </Link>
-                <button
-                  onClick={handleLogout}
-                  className="py-2 px-3 border rounded-md"
-                >
+                <button onClick={handleLogout} className="py-2 px-3 border rounded-md">
                   Logout
                 </button>
               </>
@@ -107,24 +87,16 @@ const Navbar = () => {
               {!user ? (
                 <>
                   <Link to="/login">
-                    <a href="" className="py-2 px-3 border rounded-md">
-                      Sign In
-                    </a>
+                    <button className="py-2 px-3 border rounded-md">Sign In</button>
                   </Link>
                   <Link to="/register">
-                    <a
-                      href="#"
-                      className="py-2 px-3 rounded-md bg-gradient-to-r from-orange-500 to-orange-800"
-                    >
+                    <button className="py-2 px-3 rounded-md bg-gradient-to-r from-orange-500 to-orange-800">
                       Create an account
-                    </a>
+                    </button>
                   </Link>
                 </>
               ) : (
-                <button
-                  onClick={handleLogout}
-                  className="py-2 px-3 rounded-md border"
-                >
+                <button onClick={handleLogout} className="py-2 px-3 rounded-md border">
                   Logout
                 </button>
               )}
